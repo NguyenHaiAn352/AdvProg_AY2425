@@ -31,6 +31,10 @@ int getPlayerGuess() {
     int output;
     cout << "Please input in your guess:" << endl;
     cin >> output;
+    do{
+        cout << "Number is not in range. Please try again." << endl;
+        cin >> output;
+    } while (output < 1 || output > 100);
     return output;
 }
 
@@ -83,7 +87,8 @@ bool checkSuccess(string answer) {
 bool checkContinuePlaying(char isContinued) {
     // TODO: return result after checking player continue playing or not
     bool result = false;
-    isContinued == true ? result = false : result = true;
+    if (isContinued == 'N' || isContinued == 'n') result = false;
+    else if (isContinued == 'Y' || isContinued == 'y') result = true;
     return result;
 }
 
